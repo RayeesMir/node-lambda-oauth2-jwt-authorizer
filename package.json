@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/lambda-local --timeout 300 -l index.js -h handler -e test/event.json",
-    "zip": "mkdir dist && rm -f dist/lambda-oauth2-jwt-authorizer.zip ; zip dist/lambda-oauth2-jwt-authorizer.zip -r *.js *.json .env node_modules/"
+    "zip": "mkdir dist && rm -f dist/lambda-oauth2-jwt-authorizer.zip ; zip dist/lambda-oauth2-jwt-authorizer.zip -r *.js *.json .env node_modules/",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,8 @@
   "homepage": "https://github.com/mcguinness/node-lambda-oauth2-jwt-authorizer.git#readme",
   "dependencies": {
     "dotenv": "^2.0.0",
-    "oauth2-bearer-jwt-handler": "https://github.com/mcguinness/node-oauth2-bearer-jwt-handler.git"
+    "oauth2-bearer-jwt-handler": "https://github.com/mcguinness/node-oauth2-bearer-jwt-handler.git",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "lambda-local": "^1.1.0",
@@ -40,5 +43,6 @@
     "grunt-aws-lambda": "^0.13.0",
     "grunt-env": "^0.4.4",
     "load-grunt-tasks": "^3.4.0"
-  }
+  },
+  "snyk": true
 }
